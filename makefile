@@ -4,7 +4,7 @@ new_problem:
 	name=$$(echo $$srcname | sed -e 's/[\. ]/_/g' -e 's/__/_/g'); \
     mkdir -p ./problems/$$name; \
     cd ./problems/$$name; \
-    touch $$name.go; \
-	touch $$name"_test.go"; \
+    echo "package problems" > $$name.go; \
+    echo "package problems" > $$name"_test.go"; \
 	echo "# $$srcname" > README.md; \
     echo "Created directory: $$name and file: $$name/$$name.go"
