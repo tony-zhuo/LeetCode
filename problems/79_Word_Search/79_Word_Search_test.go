@@ -12,7 +12,42 @@ func Test_exist(t *testing.T) {
 		args args
 		want bool
 	}{
-		// TODO: Add test cases.
+		{
+			name: "",
+			args: args{
+				board: [][]byte{
+					{byte('A'), byte('B'), byte('C'), byte('E')},
+					{byte('S'), byte('F'), byte('C'), byte('S')},
+					{byte('A'), byte('D'), byte('E'), byte('E')},
+				},
+				word: "ABCCED",
+			},
+			want: true,
+		},
+		{
+			name: "",
+			args: args{
+				board: [][]byte{
+					{byte('A'), byte('B'), byte('C'), byte('E')},
+					{byte('S'), byte('F'), byte('C'), byte('S')},
+					{byte('A'), byte('D'), byte('E'), byte('E')},
+				},
+				word: "SEE",
+			},
+			want: true,
+		},
+		{
+			name: "",
+			args: args{
+				board: [][]byte{
+					{byte('A'), byte('B'), byte('C'), byte('E')},
+					{byte('S'), byte('F'), byte('C'), byte('S')},
+					{byte('A'), byte('D'), byte('E'), byte('E')},
+				},
+				word: "ABCB",
+			},
+			want: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
