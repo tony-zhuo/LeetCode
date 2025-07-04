@@ -15,10 +15,8 @@ func Constructor() WordDictionary {
 func (this *WordDictionary) AddWord(word string) {
 	for _, w := range word {
 		if _, found := this.nodes[w]; !found {
-			this.nodes[w] = &WordDictionary{
-				nodes: make(map[rune]*WordDictionary),
-				end:   false,
-			}
+			node := Constructor()
+			this.nodes[w] = &node
 		}
 		this = this.nodes[w]
 	}
