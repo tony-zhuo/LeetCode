@@ -11,7 +11,9 @@ func numDecodings(s string) int {
 	// '2' = 50
 
 	dp := make([]int, n+1)
-	dp[0] = 1
+	dp[0] = 1 // 虛擬字
+
+	// 第一個字
 	if s[0] != '0' {
 		dp[1] = 1
 	} else {
@@ -19,6 +21,7 @@ func numDecodings(s string) int {
 	}
 
 	for i := 2; i <= n; i++ {
+		// 單一個字，僅檢查是否等於 0
 		if s[i-1] != '0' {
 			dp[i] += dp[i-1]
 		}
