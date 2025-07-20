@@ -1,24 +1,26 @@
 package problems
 
+import "sort"
+
 func lengthOfLIS(nums []int) int {
 	// solution 1：classic dp
-	n := len(nums)
-	dp := make([]int, len(nums))
-	ans := 0
-
-	for i := 0; i < n; i++ {
-		dp[i] = 1
-		for j := 0; j < i; j++ {
-			if nums[j] < nums[i] && dp[j]+1 > dp[i] {
-				dp[i] = dp[j] + 1
-			}
-		}
-		if dp[i] > ans {
-			ans = dp[i]
-		}
-	}
-
-	return ans
+	//n := len(nums)
+	//dp := make([]int, len(nums))
+	//ans := 0
+	//
+	//for i := 0; i < n; i++ {
+	//	dp[i] = 1
+	//	for j := 0; j < i; j++ {
+	//		if nums[j] < nums[i] && dp[j]+1 > dp[i] {
+	//			dp[i] = dp[j] + 1
+	//		}
+	//	}
+	//	if dp[i] > ans {
+	//		ans = dp[i]
+	//	}
+	//}
+	//
+	//return ans
 
 	/*
 		index ｜ nums[index] ｜ progress
@@ -33,5 +35,15 @@ func lengthOfLIS(nums []int) int {
 	*/
 
 	// solution 2：Patience Sorting + 二分搜尋（O(n log n)）
+	dp := make([]int, 0, len(nums))
+	for _, num := range nums {
+		dpIndex := sort.SearchInts(dp, num)
+		if dpIndex == len(dp) {
+			dp = append(dp, num)
+		} else {
+			dp[dpIndex] = num
+		}
+	}
 
+	return len(dp)
 }
