@@ -35,10 +35,26 @@ func lengthOfLIS(nums []int) int {
 	*/
 
 	// solution 2：Patience Sorting + 二分搜尋（O(n log n)）
+
+	/*
+		1. 初始時 `dp = []`
+		2. 處理 10：`dp = [10]`
+		3. 處理 9：9 < 10，替換得 `dp = [9]`
+		4. 處理 2：2 < 9，替換得 `dp = [2]`
+		5. 處理 5：5 > 2，添加得 `dp = [2, 5]`
+		6. 處理 3：3 > 2 但 3 < 5，替換得 `dp = [2, 3]`
+		7. 處理 7：7 > 3，添加得 `dp = [2, 3, 7]`
+		8. 處理 101：101 > 7，添加得 `dp = [2, 3, 7, 101]`
+		9. 處理 18：18 < 101，替換得 `dp = [2, 3, 7, 18]`
+
+	*/
+
 	dp := make([]int, 0, len(nums))
 	for _, num := range nums {
 		dpIndex := sort.SearchInts(dp, num)
 		if dpIndex == len(dp) {
+			// 如果 `dpIndex == len(dp)`，說明 `num` 比 `dp` 中所有元素都大
+			// 可以擴展目前的最長遞增子序列，將 `num` 添加到 `dp` 末尾
 			dp = append(dp, num)
 		} else {
 			dp[dpIndex] = num
