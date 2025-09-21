@@ -29,21 +29,30 @@ Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
 
 ## Algorithm
 
-The solution uses a two-pass approach:
+The solution uses an optimized O(1) space approach by using the first row and column as markers:
 
-1. **First pass**: Identify which rows and columns contain zeros
-   - Use two boolean arrays: `rows_zero` and `columns_zero`
-   - Scan the entire matrix and mark corresponding positions in these arrays
+1. **Check if first row/column should be zeroed**: 
+   - Record if the first row contains any zeros (`is_first_rows_zero`)
+   - Record if the first column contains any zeros (`is_first_columns_zero`)
 
-2. **Second pass**: Set zeros based on the marked positions
-   - For each row marked as containing zero, set all elements in that row to 0
-   - For each column marked as containing zero, set all elements in that column to 0
+2. **Use first row and column as markers**:
+   - Scan the matrix starting from `matrix[1][1]`
+   - If `matrix[i][j] == 0`, mark `matrix[0][j] = 0` and `matrix[i][0] = 0`
+
+3. **Set zeros based on markers**:
+   - For each cell `matrix[i][j]` (starting from `[1][1]`), if either `matrix[0][j] == 0` or `matrix[i][0] == 0`, set `matrix[i][j] = 0`
+
+4. **Handle first row and column**:
+   - If `is_first_rows_zero` is true, set entire first row to zeros
+   - If `is_first_columns_zero` is true, set entire first column to zeros
 
 ## Complexity
 
 - **Time Complexity**: O(m × n) where m is the number of rows and n is the number of columns
-- **Space Complexity**: O(m + n) for the two boolean arrays
+- **Space Complexity**: O(1) - only using constant extra space for flags
 
-## Follow-up
+## Key Insights
 
-A more space-efficient approach would be to use the first row and first column of the matrix itself as markers, achieving O(1) extra space complexity.
+- The first row and column serve dual purposes: they contain original data and act as markers
+- We must handle the first row/column separately since they're used as markers
+- This approach achieves the optimal space complexity without additional data structures
