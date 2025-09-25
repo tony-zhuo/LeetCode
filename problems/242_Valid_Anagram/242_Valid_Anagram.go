@@ -5,20 +5,15 @@ func isAnagram(s string, t string) bool {
 		return false
 	}
 
-	smap := make(map[byte]int, len(s))
-	tmap := make(map[byte]int, len(t))
+	counter := make(map[rune]int)
 
-	for i, _ := range s {
-		smap[s[i]]++
-		tmap[t[i]]++
+	for _, ch := range s {
+		counter[ch]++
 	}
 
-	for _, i := range s {
-		tv, ok := tmap[byte(i)]
-		if !ok {
-			return false
-		}
-		if smap[byte(i)] != tv {
+	for _, ch := range t {
+		counter[ch]--
+		if counter[ch] < 0 {
 			return false
 		}
 	}
