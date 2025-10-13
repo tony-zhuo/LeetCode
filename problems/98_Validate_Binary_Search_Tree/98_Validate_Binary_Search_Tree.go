@@ -1,44 +1,25 @@
 package problems
 
-import "leet-code/structure"
+import (
+	"leet-code/structure"
+	"math"
+)
 
 func isValidBST(root *structure.TreeNode) bool {
-	if root == nil {
-		return true
-	}
-	if root.Left == nil && root.Right == nil {
-		return true
-	}
-
-	if root.Left != nil && root.Val <= root.Left.Val {
-		return false
-	}
-	if root.Right != nil && root.Val >= root.Right.Val {
-		return false
-	}
-
-	if !(checkChild(root.Left, root.Val, "left") && checkChild(root.Right, root.Val, "right")) {
-		return false
-	}
-
-	return isValidBST(root.Left) && isValidBST(root.Right)
+	return validate(root, math.MinInt64, math.MaxInt64)
 }
 
-func checkChild(root *structure.TreeNode, val int, side string) bool {
-	if root == nil {
+func validate(node *structure.TreeNode, min, max int) bool {
+	if node == nil {
 		return true
 	}
 
-	switch side {
-	case "left":
-		if root.Val >= val {
-			return false
-		}
-	case "right":
-		if root.Val <= val {
-			return false
-		}
+	// 當前節點必須在 (min, max) 範圍內
+	if node.Val <= min || node.Val >= max {
+		return false
 	}
 
-	return checkChild(root.Left, val, side) && checkChild(root.Right, val, side)
+	// 左子樹：所有節點必須 < node.Val（更新上界為 node.Val）
+	// 右子樹：所有節點必須 > node.Val（更新下界為 node.Val）
+	return validate(node.Left, min, node.Val) && validate(node.Right, node.Val, max)
 }
