@@ -46,6 +46,54 @@ This is a classic **dynamic programming** problem that can be solved using the *
 
 For any amount `i`, we can build it from a smaller amount `i - coin` by adding one more coin. By trying all possible coins and taking the minimum, we ensure we find the optimal solution.
 
+### Execution Example:
+
+Let's trace through **Example 1**: `coins = [1, 2, 5], amount = 11`
+
+**Initialization:**
+```
+dp = [0, ∞, ∞, ∞, ∞, ∞, ∞, ∞, ∞, ∞, ∞, ∞]
+      0  1  2  3  4  5  6  7  8  9 10 11
+```
+
+**Step-by-step DP table construction:**
+
+For amount = 1:
+- Try coin 1: dp[1] = min(∞, dp[0] + 1) = 1
+- Result: `dp[1] = 1` (one 1-coin)
+
+For amount = 2:
+- Try coin 1: dp[2] = min(∞, dp[1] + 1) = 2
+- Try coin 2: dp[2] = min(2, dp[0] + 1) = 1
+- Result: `dp[2] = 1` (one 2-coin)
+
+For amount = 3:
+- Try coin 1: dp[3] = min(∞, dp[2] + 1) = 2
+- Try coin 2: dp[3] = min(2, dp[1] + 1) = 2
+- Result: `dp[3] = 2` (1+2 or 2+1)
+
+For amount = 5:
+- Try coin 1: dp[5] = min(∞, dp[4] + 1) = 3
+- Try coin 2: dp[5] = min(3, dp[3] + 1) = 3
+- Try coin 5: dp[5] = min(3, dp[0] + 1) = 1
+- Result: `dp[5] = 1` (one 5-coin)
+
+...continuing this process...
+
+For amount = 11:
+- Try coin 1: dp[11] = min(∞, dp[10] + 1) = 3
+- Try coin 2: dp[11] = min(3, dp[9] + 1) = 3
+- Try coin 5: dp[11] = min(3, dp[6] + 1) = 3
+- Result: `dp[11] = 3` (5+5+1)
+
+**Final DP table:**
+```
+dp = [0, 1, 1, 2, 2, 1, 2, 2, 3, 3, 2, 3]
+      0  1  2  3  4  5  6  7  8  9 10 11
+```
+
+The answer is `dp[11] = 3`, which represents the combination 5 + 5 + 1.
+
 ## Complexity Analysis
 
 - **Time Complexity**: O(amount × n) - where n is the number of coins. We compute dp[i] for all amounts from 1 to amount, and for each amount we try all coins.
