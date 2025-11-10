@@ -1,38 +1,26 @@
 package problems
 
+import "strings"
+
 func reverseVowels(s string) string {
 	bytes := []byte(s)
-	l := 0
-	r := len(bytes) - 1
+	left := 0
+	right := len(bytes) - 1
 
-	for l < r {
-		if !isVowel(bytes[l]) {
-			l++
-		} else if !isVowel(bytes[r]) {
-			r--
+	for left < right {
+		if !isVowel(bytes[left]) {
+			left++
+		} else if !isVowel(bytes[right]) {
+			right--
 		} else {
-			// Both are vowels, swap them
-			bytes[l], bytes[r] = bytes[r], bytes[l]
-			l++
-			r--
+			bytes[left], bytes[right] = bytes[right], bytes[left]
+			left++
+			right--
 		}
 	}
 	return string(bytes)
 }
 
 func isVowel(c byte) bool {
-	vowels := map[byte]struct{}{
-		'a': {},
-		'e': {},
-		'i': {},
-		'o': {},
-		'u': {},
-		'A': {},
-		'E': {},
-		'I': {},
-		'O': {},
-		'U': {},
-	}
-	_, ok := vowels[c]
-	return ok
+	return strings.ContainsRune("aeiouAEIOU", rune(c))
 }
