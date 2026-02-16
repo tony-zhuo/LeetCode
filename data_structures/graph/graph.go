@@ -2,6 +2,12 @@ package datastructures
 
 import "sort"
 
+// Node is a graph node used by problem solutions (adjacency via pointers).
+type Node struct {
+	Val       int
+	Neighbors []*Node
+}
+
 // Graph using adjacency list representation
 type Graph struct {
 	adjacency map[int][]int

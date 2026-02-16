@@ -1,6 +1,42 @@
 package datastructures
 
-import "errors"
+import (
+	"errors"
+)
+
+// ============================================================
+// ListNode — simple linked list node used by problem solutions
+// ============================================================
+
+// ListNode is a simple linked list node used by problem solutions.
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
+// Arr2Node converts a slice of ints into a linked list and returns the head.
+func Arr2Node(input []int) *ListNode {
+	if len(input) == 0 {
+		return nil
+	}
+
+	head := &ListNode{
+		Val:  input[0],
+		Next: nil,
+	}
+	curr := head
+
+	for i := 1; i < len(input); i++ {
+		curr.Next = &ListNode{
+			Val:  input[i],
+			Next: nil,
+		}
+
+		curr = curr.Next
+	}
+
+	return head
+}
 
 var (
 	ErrEmptyList      = errors.New("list is empty")

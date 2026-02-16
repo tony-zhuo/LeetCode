@@ -110,3 +110,34 @@ func CountNodes(root *TreeNode) int {
 	}
 	return 1 + CountNodes(root.Left) + CountNodes(root.Right)
 }
+
+// Slice2BinaryTree constructs a binary tree from a level-order slice.
+// nil entries represent absent nodes.
+func Slice2BinaryTree(arr []*int) *TreeNode {
+	if len(arr) == 0 || arr[0] == nil {
+		return nil
+	}
+
+	root := &TreeNode{Val: *arr[0]}
+	queue := []*TreeNode{root}
+	index := 1
+
+	for index < len(arr) {
+		current := queue[0]
+		queue = queue[1:]
+
+		if index < len(arr) && arr[index] != nil {
+			current.Left = &TreeNode{Val: *arr[index]}
+			queue = append(queue, current.Left)
+		}
+		index++
+
+		if index < len(arr) && arr[index] != nil {
+			current.Right = &TreeNode{Val: *arr[index]}
+			queue = append(queue, current.Right)
+		}
+		index++
+	}
+
+	return root
+}
