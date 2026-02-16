@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a Go-based LeetCode problem-solving repository with the following structure:
 
 - `problems/` - Contains individual LeetCode problem solutions, each in its own directory
+- `data_structures/` - From-scratch implementations of common data structures, organized by category
 - `structure/` - Shared data structures and utilities (ListNode, TreeNode, Graph)
 - `libs/` - Additional helper libraries (if any)
 
@@ -29,6 +30,11 @@ make new_problem
 ```
 This will prompt for the problem name and create the appropriate directory structure with boilerplate Go files.
 
+### Data Structure Tests
+- Run all data structure tests: `make test_ds` or `go test -v ./data_structures/...`
+- Run specific: `make test_ds_single` or `go test -v ./data_structures/{name}/`
+- Scaffold new: `make new_ds`
+
 ### Module Information
 - Module name: `leet-code`
 - Go version: 1.23.0
@@ -37,6 +43,7 @@ This will prompt for the problem name and create the appropriate directory struc
 
 ### Package Structure
 - All problem solutions use `package problems`
+- All data structure implementations use `package datastructures`
 - Shared data structures are in `package structure`
 - Common imports: `"leet-code/structure"` for data structures
 
