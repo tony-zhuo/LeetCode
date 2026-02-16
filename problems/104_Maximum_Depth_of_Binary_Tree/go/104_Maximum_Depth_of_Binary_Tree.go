@@ -1,6 +1,6 @@
 package problems
 
-import datastructures "leet-code/data_structures/binary_tree"
+import datastructures "leet-code/data_structures/binary_tree/go"
 
 func maxDepth(root *datastructures.TreeNode) int {
 	if root == nil {

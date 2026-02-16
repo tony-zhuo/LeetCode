@@ -1,6 +1,6 @@
 package problems
 
-import datastructures "leet-code/data_structures/graph"
+import datastructures "leet-code/data_structures/graph/go"
 
 func cloneGraph(node *datastructures.Node) *datastructures.Node {
 	if node == nil {

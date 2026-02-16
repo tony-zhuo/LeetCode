@@ -1,7 +1,7 @@
 package problems
 
 import (
-	datastructures "leet-code/data_structures/binary_tree"
+	datastructures "leet-code/data_structures/binary_tree/go"
 	"sort"
 )
 

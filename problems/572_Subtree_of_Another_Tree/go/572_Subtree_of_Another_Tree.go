@@ -1,6 +1,6 @@
 package problems
 
-import datastructures "leet-code/data_structures/binary_tree"
+import datastructures "leet-code/data_structures/binary_tree/go"
 
 func isSubtree(root *datastructures.TreeNode, subRoot *datastructures.TreeNode) bool {
 	if root == nil && subRoot == nil {

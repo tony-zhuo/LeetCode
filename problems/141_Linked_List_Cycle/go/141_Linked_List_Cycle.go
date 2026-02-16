@@ -1,6 +1,6 @@
 package problems
 
-import datastructures "leet-code/data_structures/linked_list"
+import datastructures "leet-code/data_structures/linked_list/go"
 
 func hasCycle(head *datastructures.ListNode) bool {
 	if head == nil || head.Next == nil {

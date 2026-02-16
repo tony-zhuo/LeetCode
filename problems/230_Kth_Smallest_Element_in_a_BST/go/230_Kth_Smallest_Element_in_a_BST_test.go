@@ -2,7 +2,7 @@ package problems
 
 import (
 	"leet-code/libs"
-	datastructures "leet-code/data_structures/binary_tree"
+	datastructures "leet-code/data_structures/binary_tree/go"
 	"testing"
 )
 

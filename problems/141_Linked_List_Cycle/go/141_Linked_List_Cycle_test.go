@@ -1,7 +1,7 @@
 package problems
 
 import (
-	datastructures "leet-code/data_structures/linked_list"
+	datastructures "leet-code/data_structures/linked_list/go"
 	"testing"
 )
 

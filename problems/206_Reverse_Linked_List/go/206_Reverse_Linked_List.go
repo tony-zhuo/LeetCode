@@ -1,6 +1,6 @@
 package problems
 
-import datastructures "leet-code/data_structures/linked_list"
+import datastructures "leet-code/data_structures/linked_list/go"
 
 /**
  * Definition for singly-linked list.

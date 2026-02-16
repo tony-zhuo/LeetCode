@@ -1,6 +1,6 @@
 package problems
 
-import datastructures "leet-code/data_structures/binary_tree"
+import datastructures "leet-code/data_structures/binary_tree/go"
 
 func buildTree(preorder []int, inorder []int) *datastructures.TreeNode {
 	if len(preorder) == 0 && len(inorder) == 0 {
