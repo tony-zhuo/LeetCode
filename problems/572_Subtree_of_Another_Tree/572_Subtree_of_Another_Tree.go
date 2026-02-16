@@ -1,8 +1,8 @@
 package problems
 
-import "leet-code/structure"
+import datastructures "leet-code/data_structures/binary_tree"
 
-func isSubtree(root *structure.TreeNode, subRoot *structure.TreeNode) bool {
+func isSubtree(root *datastructures.TreeNode, subRoot *datastructures.TreeNode) bool {
 	if root == nil && subRoot == nil {
 		return true
 	}
@@ -16,7 +16,7 @@ func isSubtree(root *structure.TreeNode, subRoot *structure.TreeNode) bool {
 	return isSubtree(root.Left, subRoot) || isSubtree(root.Right, subRoot)
 }
 
-func isSameTree(tree1 *structure.TreeNode, tree2 *structure.TreeNode) bool {
+func isSameTree(tree1 *datastructures.TreeNode, tree2 *datastructures.TreeNode) bool {
 	if tree1 == nil && tree2 == nil {
 		return true
 	} else if (tree1 != nil && tree2 == nil) || (tree1 == nil && tree2 != nil) {

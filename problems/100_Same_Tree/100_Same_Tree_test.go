@@ -2,7 +2,7 @@ package problems
 
 import (
 	"leet-code/libs"
-	"leet-code/structure"
+	datastructures "leet-code/data_structures/binary_tree"
 	"testing"
 )
 
@@ -44,8 +44,8 @@ func Test_isSameTree(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			pTree := structure.Slice2BinaryTree(tt.args.p)
-			qTree := structure.Slice2BinaryTree(tt.args.q)
+			pTree := datastructures.Slice2BinaryTree(tt.args.p)
+			qTree := datastructures.Slice2BinaryTree(tt.args.q)
 			if got := isSameTree(pTree, qTree); got != tt.want {
 				t.Errorf("isSameTree() = %v, want %v", got, tt.want)
 			}

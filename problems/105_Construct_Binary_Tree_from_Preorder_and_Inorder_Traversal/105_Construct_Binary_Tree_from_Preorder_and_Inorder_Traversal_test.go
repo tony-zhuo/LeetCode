@@ -2,7 +2,7 @@ package problems
 
 import (
 	"leet-code/libs"
-	"leet-code/structure"
+	datastructures "leet-code/data_structures/binary_tree"
 	"reflect"
 	"testing"
 )
@@ -15,7 +15,7 @@ func Test_buildTree(t *testing.T) {
 	tests := []struct {
 		name string
 		args args
-		want *structure.TreeNode
+		want *datastructures.TreeNode
 	}{
 		{
 			name: "",
@@ -23,7 +23,7 @@ func Test_buildTree(t *testing.T) {
 				preorder: []int{3, 9, 20, 15, 7},
 				inorder:  []int{9, 3, 15, 20, 7},
 			},
-			want: structure.Slice2BinaryTree([]*int{
+			want: datastructures.Slice2BinaryTree([]*int{
 				libs.IntPtr(3), libs.IntPtr(9), libs.IntPtr(20), nil, nil, libs.IntPtr(15), libs.IntPtr(7),
 			}),
 		},
@@ -33,7 +33,7 @@ func Test_buildTree(t *testing.T) {
 				preorder: []int{-1},
 				inorder:  []int{-1},
 			},
-			want: structure.Slice2BinaryTree([]*int{
+			want: datastructures.Slice2BinaryTree([]*int{
 				libs.IntPtr(-1),
 			}),
 		},

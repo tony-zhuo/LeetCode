@@ -1,39 +1,39 @@
 package problems
 
 import (
-	"leet-code/structure"
+	datastructures "leet-code/data_structures/linked_list"
 	"reflect"
 	"testing"
 )
 
 func Test_reverseList(t *testing.T) {
 	type args struct {
-		head *structure.ListNode
+		head *datastructures.ListNode
 	}
 	tests := []struct {
 		name string
 		args args
-		want *structure.ListNode
+		want *datastructures.ListNode
 	}{
 		{
 			name: "",
 			args: args{
-				head: &structure.ListNode{
+				head: &datastructures.ListNode{
 					Val: 1,
-					Next: &structure.ListNode{
+					Next: &datastructures.ListNode{
 						Val: 2,
-						Next: &structure.ListNode{
+						Next: &datastructures.ListNode{
 							Val:  3,
 							Next: nil,
 						},
 					},
 				},
 			},
-			want: &structure.ListNode{
+			want: &datastructures.ListNode{
 				Val: 3,
-				Next: &structure.ListNode{
+				Next: &datastructures.ListNode{
 					Val: 2,
-					Next: &structure.ListNode{
+					Next: &datastructures.ListNode{
 						Val:  1,
 						Next: nil,
 					},

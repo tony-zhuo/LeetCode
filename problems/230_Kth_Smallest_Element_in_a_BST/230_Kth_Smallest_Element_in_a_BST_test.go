@@ -2,7 +2,7 @@ package problems
 
 import (
 	"leet-code/libs"
-	"leet-code/structure"
+	datastructures "leet-code/data_structures/binary_tree"
 	"testing"
 )
 
@@ -36,7 +36,7 @@ func Test_kthSmallest(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			rootTree := structure.Slice2BinaryTree(tt.args.root)
+			rootTree := datastructures.Slice2BinaryTree(tt.args.root)
 			if got := kthSmallest(rootTree, tt.args.k); got != tt.want {
 				t.Errorf("kthSmallest() = %v, want %v", got, tt.want)
 			}

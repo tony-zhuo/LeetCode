@@ -1,15 +1,15 @@
 package problems
 
 import (
-	"leet-code/structure"
+	datastructures "leet-code/data_structures/binary_tree"
 	"math"
 )
 
-func isValidBST(root *structure.TreeNode) bool {
+func isValidBST(root *datastructures.TreeNode) bool {
 	return validate(root, math.MinInt64, math.MaxInt64)
 }
 
-func validate(node *structure.TreeNode, min, max int) bool {
+func validate(node *datastructures.TreeNode, min, max int) bool {
 	if node == nil {
 		return true
 	}

@@ -2,7 +2,7 @@ package problems
 
 import (
 	"leet-code/libs"
-	"leet-code/structure"
+	datastructures "leet-code/data_structures/binary_tree"
 	"reflect"
 	"testing"
 )
@@ -47,7 +47,7 @@ func Test_levelOrder(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			tree := structure.Slice2BinaryTree(tt.args.root)
+			tree := datastructures.Slice2BinaryTree(tt.args.root)
 			if got := levelOrder(tree); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("levelOrder() = %v, want %v", got, tt.want)
 			}

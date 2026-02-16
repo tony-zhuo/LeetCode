@@ -1,6 +1,6 @@
 package problems
 
-import "leet-code/structure"
+import datastructures "leet-code/data_structures/linked_list"
 
 /**
  * Definition for singly-linked list.
@@ -9,13 +9,13 @@ import "leet-code/structure"
  *     Next *ListNode
  * }
  */
-func reverseList(head *structure.ListNode) *structure.ListNode {
+func reverseList(head *datastructures.ListNode) *datastructures.ListNode {
 	if head == nil {
 		return nil
 	}
 	curr := head
 
-	var previous *structure.ListNode
+	var previous *datastructures.ListNode
 
 	for curr != nil {
 		next := curr.Next

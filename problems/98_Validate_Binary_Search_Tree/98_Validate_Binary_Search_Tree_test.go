@@ -2,7 +2,7 @@ package problems
 
 import (
 	"leet-code/libs"
-	"leet-code/structure"
+	datastructures "leet-code/data_structures/binary_tree"
 	"testing"
 )
 
@@ -40,7 +40,7 @@ func Test_isValidBST(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			tree := structure.Slice2BinaryTree(tt.args.root)
+			tree := datastructures.Slice2BinaryTree(tt.args.root)
 			if got := isValidBST(tree); got != tt.want {
 				t.Errorf("isValidBST() = %v, want %v", got, tt.want)
 			}

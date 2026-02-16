@@ -1,14 +1,14 @@
 package problems
 
-import "leet-code/structure"
+import datastructures "leet-code/data_structures/binary_tree"
 
-func buildTree(preorder []int, inorder []int) *structure.TreeNode {
+func buildTree(preorder []int, inorder []int) *datastructures.TreeNode {
 	if len(preorder) == 0 && len(inorder) == 0 {
 		return nil
 	}
 
 	mid := -1
-	root := &structure.TreeNode{Val: preorder[0]}
+	root := &datastructures.TreeNode{Val: preorder[0]}
 	for i, v := range inorder {
 		if root.Val == v {
 			mid = i

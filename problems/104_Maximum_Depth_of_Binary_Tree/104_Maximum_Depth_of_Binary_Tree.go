@@ -1,8 +1,8 @@
 package problems
 
-import "leet-code/structure"
+import datastructures "leet-code/data_structures/binary_tree"
 
-func maxDepth(root *structure.TreeNode) int {
+func maxDepth(root *datastructures.TreeNode) int {
 	if root == nil {
 		return 0
 	}

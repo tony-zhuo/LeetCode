@@ -1,13 +1,13 @@
 package problems
 
 import (
-	"leet-code/structure"
+	datastructures "leet-code/data_structures/linked_list"
 	"testing"
 )
 
 func Test_hasCycle(t *testing.T) {
 	type args struct {
-		head *structure.ListNode
+		head *datastructures.ListNode
 	}
 	tests := []struct {
 		name string
@@ -17,12 +17,12 @@ func Test_hasCycle(t *testing.T) {
 		{
 			name: "cycle at tail pointing to second node",
 			args: args{
-				head: func() *structure.ListNode {
+				head: func() *datastructures.ListNode {
 					// [3,2,0,-4] with tail connecting to node index 1
-					node1 := &structure.ListNode{Val: 3}
-					node2 := &structure.ListNode{Val: 2}
-					node3 := &structure.ListNode{Val: 0}
-					node4 := &structure.ListNode{Val: -4}
+					node1 := &datastructures.ListNode{Val: 3}
+					node2 := &datastructures.ListNode{Val: 2}
+					node3 := &datastructures.ListNode{Val: 0}
+					node4 := &datastructures.ListNode{Val: -4}
 					
 					node1.Next = node2
 					node2.Next = node3
@@ -37,10 +37,10 @@ func Test_hasCycle(t *testing.T) {
 		{
 			name: "cycle at tail pointing to head",
 			args: args{
-				head: func() *structure.ListNode {
+				head: func() *datastructures.ListNode {
 					// [1,2] with tail connecting to node index 0
-					node1 := &structure.ListNode{Val: 1}
-					node2 := &structure.ListNode{Val: 2}
+					node1 := &datastructures.ListNode{Val: 1}
+					node2 := &datastructures.ListNode{Val: 2}
 					
 					node1.Next = node2
 					node2.Next = node1 // cycle: tail points to head
@@ -53,19 +53,19 @@ func Test_hasCycle(t *testing.T) {
 		{
 			name: "no cycle - single node",
 			args: args{
-				head: &structure.ListNode{Val: 1, Next: nil},
+				head: &datastructures.ListNode{Val: 1, Next: nil},
 			},
 			want: false,
 		},
 		{
 			name: "no cycle - multiple nodes",
 			args: args{
-				head: func() *structure.ListNode {
+				head: func() *datastructures.ListNode {
 					// [1,2,3,4] with no cycle
-					node1 := &structure.ListNode{Val: 1}
-					node2 := &structure.ListNode{Val: 2}
-					node3 := &structure.ListNode{Val: 3}
-					node4 := &structure.ListNode{Val: 4}
+					node1 := &datastructures.ListNode{Val: 1}
+					node2 := &datastructures.ListNode{Val: 2}
+					node3 := &datastructures.ListNode{Val: 3}
+					node4 := &datastructures.ListNode{Val: 4}
 					
 					node1.Next = node2
 					node2.Next = node3
@@ -87,9 +87,9 @@ func Test_hasCycle(t *testing.T) {
 		{
 			name: "self-cycle",
 			args: args{
-				head: func() *structure.ListNode {
+				head: func() *datastructures.ListNode {
 					// Single node pointing to itself
-					node := &structure.ListNode{Val: 1}
+					node := &datastructures.ListNode{Val: 1}
 					node.Next = node
 					return node
 				}(),

@@ -1,8 +1,8 @@
 package problems
 
-import "leet-code/structure"
+import datastructures "leet-code/data_structures/linked_list"
 
-func hasCycle(head *structure.ListNode) bool {
+func hasCycle(head *datastructures.ListNode) bool {
 	if head == nil || head.Next == nil {
 		return false
 	}

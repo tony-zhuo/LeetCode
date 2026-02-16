@@ -8,7 +8,6 @@ This is a Go-based LeetCode problem-solving repository with the following struct
 
 - `problems/` - Contains individual LeetCode problem solutions, each in its own directory
 - `data_structures/` - From-scratch implementations of common data structures, organized by category
-- `structure/` - Shared data structures and utilities (ListNode, TreeNode, Graph)
 - `libs/` - Additional helper libraries (if any)
 
 Each problem directory follows this naming pattern: `{number}_{Problem_Name}/` and contains:
@@ -44,14 +43,10 @@ This will prompt for the problem name and create the appropriate directory struc
 ### Package Structure
 - All problem solutions use `package problems`
 - All data structure implementations use `package datastructures`
-- Shared data structures are in `package structure`
-- Common imports: `"leet-code/structure"` for data structures
-
-### Data Structures
-The `structure/` package provides:
-- `ListNode` - Singly linked list with `Arr2Node()` helper function
-- `TreeNode` - Binary tree with `Slice2BinaryTree()` helper function  
-- `graph.go` - Graph-related structures
+- Common imports for problem solutions:
+  - `"leet-code/data_structures/linked_list"` for `ListNode` and `Arr2Node()`
+  - `"leet-code/data_structures/binary_tree"` for `TreeNode` and `Slice2BinaryTree()`
+  - `"leet-code/data_structures/graph"` for `Node` (graph node with Neighbors)
 
 ### Testing Patterns
 - Uses Go's standard testing framework
@@ -62,5 +57,5 @@ The `structure/` package provides:
 ### Solution Implementation
 - Solutions are implemented as standalone functions (not methods)
 - Function names typically match the problem (e.g., `reverseList`)
-- Import shared structures from `leet-code/structure` package
+- Import shared structures from `leet-code/data_structures/` subpackages (aliased as `datastructures`)
 - Follow Go naming conventions (camelCase for unexported functions)

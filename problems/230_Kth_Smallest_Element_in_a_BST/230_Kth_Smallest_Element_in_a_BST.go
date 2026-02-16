@@ -1,11 +1,11 @@
 package problems
 
 import (
-	"leet-code/structure"
+	datastructures "leet-code/data_structures/binary_tree"
 	"sort"
 )
 
-func kthSmallest(root *structure.TreeNode, k int) int {
+func kthSmallest(root *datastructures.TreeNode, k int) int {
 	tmp := orderTree(root)
 	sort.Slice(tmp, func(i, j int) bool {
 		return tmp[i] < tmp[j]
@@ -14,7 +14,7 @@ func kthSmallest(root *structure.TreeNode, k int) int {
 	return tmp[k-1]
 }
 
-func orderTree(root *structure.TreeNode) []int {
+func orderTree(root *datastructures.TreeNode) []int {
 	tmp := make([]int, 0)
 	if root == nil {
 		return tmp

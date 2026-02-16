@@ -1,8 +1,8 @@
 package problems
 
-import "leet-code/structure"
+import datastructures "leet-code/data_structures/binary_tree"
 
-func levelOrder(root *structure.TreeNode) [][]int {
+func levelOrder(root *datastructures.TreeNode) [][]int {
 	if root == nil {
 		return nil
 	}
@@ -17,7 +17,7 @@ func levelOrder(root *structure.TreeNode) [][]int {
 	return res
 }
 
-func scanTree(root *structure.TreeNode, level int, m map[int][]int) {
+func scanTree(root *datastructures.TreeNode, level int, m map[int][]int) {
 	if root == nil {
 		return
 	}

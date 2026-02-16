@@ -1,6 +1,6 @@
 package problems
 
-import "leet-code/structure"
+import datastructures "leet-code/data_structures/binary_tree"
 
 /**
  * Definition for a binary tree node.
@@ -10,7 +10,7 @@ import "leet-code/structure"
  *     Right *TreeNode
  * }
  */
-func isSameTree(p *structure.TreeNode, q *structure.TreeNode) bool {
+func isSameTree(p *datastructures.TreeNode, q *datastructures.TreeNode) bool {
 	if p == nil && q == nil {
 		return true
 	} else if (p != nil && q == nil) || (p == nil && q != nil) {
