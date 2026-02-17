@@ -10,11 +10,10 @@ new_problem:
 	name=$$(echo $$srcname | sed -e 's/[\. ]/_/g' -e 's/__/_/g'); \
 	dir=./problems/$$name; \
 	mkdir -p $$dir/go $$dir/python; \
-	echo "package problems" > $$dir/go/$$name.go; \
-	echo "package problems" > $$dir/go/$${name}_test.go; \
-	echo "from solution import Solution" > $$dir/python/test_solution.py; \
-	echo "class Solution:" > $$dir/python/solution.py; \
-	echo "    pass" >> $$dir/python/solution.py; \
+	printf "package problems\n\n// Multiple solutions: name each func as {funcName}_{approach}\n// e.g. twoSum_bruteforce, twoSum_hashmap\n" > $$dir/go/$$name.go; \
+	printf "package problems\n\n// Share test cases across solutions:\n// var cases = []struct{ ... }{ ... }\n// func Test_{funcName}_{approach}(t *testing.T) { ... }\n" > $$dir/go/$${name}_test.go; \
+	printf "from solution import Solution\n\n# Share test cases across solutions:\n# CASES = [...]\n# Use @pytest.mark.parametrize for each method\n" > $$dir/python/test_solution.py; \
+	printf "class Solution:\n    # Multiple solutions: name each method as {methodName}_{approach}\n    # e.g. twoSum_bruteforce, twoSum_hashmap\n    pass\n" > $$dir/python/solution.py; \
 	echo "# $$srcname" > $$dir/README.md; \
 	echo "Created: $$dir (go + python)"
 
@@ -23,8 +22,8 @@ new_problem_go:
 	name=$$(echo $$srcname | sed -e 's/[\. ]/_/g' -e 's/__/_/g'); \
 	dir=./problems/$$name; \
 	mkdir -p $$dir/go; \
-	echo "package problems" > $$dir/go/$$name.go; \
-	echo "package problems" > $$dir/go/$${name}_test.go; \
+	printf "package problems\n\n// Multiple solutions: name each func as {funcName}_{approach}\n// e.g. twoSum_bruteforce, twoSum_hashmap\n" > $$dir/go/$$name.go; \
+	printf "package problems\n\n// Share test cases across solutions:\n// var cases = []struct{ ... }{ ... }\n// func Test_{funcName}_{approach}(t *testing.T) { ... }\n" > $$dir/go/$${name}_test.go; \
 	[ -f $$dir/README.md ] || echo "# $$srcname" > $$dir/README.md; \
 	echo "Created: $$dir/go"
 
@@ -33,9 +32,8 @@ new_problem_py:
 	name=$$(echo $$srcname | sed -e 's/[\. ]/_/g' -e 's/__/_/g'); \
 	dir=./problems/$$name; \
 	mkdir -p $$dir/python; \
-	echo "from solution import Solution" > $$dir/python/test_solution.py; \
-	echo "class Solution:" > $$dir/python/solution.py; \
-	echo "    pass" >> $$dir/python/solution.py; \
+	printf "from solution import Solution\n\n# Share test cases across solutions:\n# CASES = [...]\n# Use @pytest.mark.parametrize for each method\n" > $$dir/python/test_solution.py; \
+	printf "class Solution:\n    # Multiple solutions: name each method as {methodName}_{approach}\n    # e.g. twoSum_bruteforce, twoSum_hashmap\n    pass\n" > $$dir/python/solution.py; \
 	[ -f $$dir/README.md ] || echo "# $$srcname" > $$dir/README.md; \
 	echo "Created: $$dir/python"
 
@@ -43,9 +41,8 @@ add_python:
 	@read -p "Enter problem directory name: " name; \
 	dir=./problems/$$name/python; \
 	mkdir -p $$dir; \
-	echo "from solution import Solution" > $$dir/test_solution.py; \
-	echo "class Solution:" > $$dir/solution.py; \
-	echo "    pass" >> $$dir/solution.py; \
+	printf "from solution import Solution\n\n# Share test cases across solutions:\n# CASES = [...]\n# Use @pytest.mark.parametrize for each method\n" > $$dir/test_solution.py; \
+	printf "class Solution:\n    # Multiple solutions: name each method as {methodName}_{approach}\n    # e.g. twoSum_bruteforce, twoSum_hashmap\n    pass\n" > $$dir/solution.py; \
 	echo "Created: $$dir"
 
 # ── Test targets ─────────────────────────────────────────────
