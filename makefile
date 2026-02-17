@@ -56,7 +56,7 @@ test_go:
 	go test ./...
 
 test_py:
-	python3 -m pytest -v
+	.venv/bin/python -m pytest -v
 
 test_problem_go:
 	@read -p "Enter problem directory name: " name; \
@@ -64,7 +64,7 @@ test_problem_go:
 
 test_problem_py:
 	@read -p "Enter problem directory name: " name; \
-	python3 -m pytest -v ./problems/$$name/python/
+	.venv/bin/python -m pytest -v ./problems/$$name/python/
 
 # ── Data structure targets ───────────────────────────────────
 
@@ -111,7 +111,7 @@ test_ds_go:
 	go test -v ./data_structures/...
 
 test_ds_py:
-	python3 -m pytest -v ./data_structures/
+	.venv/bin/python -m pytest -v ./data_structures/
 
 test_ds_single_go:
 	@read -p "Enter data structure directory name: " name; \
@@ -119,4 +119,4 @@ test_ds_single_go:
 
 test_ds_single_py:
 	@read -p "Enter data structure directory name: " name; \
-	python3 -m pytest -v ./data_structures/$$name/python/
+	.venv/bin/python -m pytest -v ./data_structures/$$name/python/
