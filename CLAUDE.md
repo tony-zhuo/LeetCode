@@ -34,7 +34,7 @@ data_structures/{name}/
 ### Running Tests
 - Run all tests (both languages): `make test`
 - Go only: `make test_go` or `go test ./...`
-- Python only: `make test_py` or `python3 -m pytest -v`
+- Python only: `make test_py` (**always use Makefile targets for Python tests**; do NOT run `python3 -m pytest` directly)
 - Single problem (Go): `make test_problem_go` (prompts for name)
 - Single problem (Python): `make test_problem_py` (prompts for name)
 
